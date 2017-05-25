@@ -16626,7 +16626,10 @@ Train fold indices:[0 1 2 3] Test fold indices:[4 5]
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong>  Compare and contrast the possible advantages and disadvantages of the various model selectors implemented.</p>
 <p><strong>Answer 2:</strong></p>
-<p>the DIC selector seems to be much slower than the others. For example, in VEGETABLE, it is taking many times what the other selectors took. SelectorBIC seems a little slower than SelectorCV, but the difference is not noticable. BIC, from what I've read, is also much slower when working with many features. The selector that is probably going to work the best for a full dictionary of works would be CV.</p>
+<p>The DIC have have higher pre-processing time as it creates combination for all possible words and number of states. With increase in number of words, the pre-processing time would shoot up. Other model selecting strategy are agnostic to the performance of other models and just try to enhance performance by looking at various models for the same word.</p>
+<p>BIC tries to select model that maximizes the gain by improving within-class statistics. In the BIC equation, a penalty term penalizes complexity to avoid overfitting, so that it is not necessary to also use cross-validation in the selection process.</p>
+<p>DIC being a discriminant selector ability of a training set for one word against competing words. Instead of a penalty term for complexity, it provides a penalty if model liklihoods for non-matching words are too similar to model likelihoods for the correct word in the word set. The competitive nature of DIC makes it the best performing selection strategy in most of the cases.</p>
+<p>Cross validation allows to create models that generalize well to new data by means of random sampling. More are the number of cross-validation set, better the cross validation selector would perform. However, cross validation selector would not work well if the training data is not ample.</p>
 
 </div>
 </div>
